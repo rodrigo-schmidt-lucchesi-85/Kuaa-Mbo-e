@@ -1,5 +1,5 @@
 # Kuaa Mbo’e
-![](/home/rsl/Documents/GITHUB/Logic-Rate/capa-dia-do-indio-1.png)
+![](capa-dia-do-indio-1.png)
 
 
 
