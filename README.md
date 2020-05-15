@@ -1,5 +1,5 @@
 # Kuaa Mbo’e
-![](capa-dia-do-indio-1.png)
+![](capa.png)
 
 
 
