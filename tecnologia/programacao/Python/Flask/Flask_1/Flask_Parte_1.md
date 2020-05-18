@@ -1,4 +1,4 @@
-# Um guia para entender Flask... ...detalhadamente
+﻿# Um guia para entender Flask... ...detalhadamente
 
 ![](/home/rsl/Documents/GITHUB/Logic-Rate/tutoriais/image/flask_terminal.png)
 
@@ -12,40 +12,26 @@
 
 # O que é Flask?
 
-Flask é um web-framework desenvolvido em Python, com a seguintes bibliotecas:
+**Flask** é um web-framework desenvolvido em Python, sendo constituído pelas bibliotecas:
 
--  (**Jinja2**) para gerenciar dinamicamente os arquivos **HTML** do código, responsáveis pela interface gráfica  (**Front-End**) do aplicativo
+-  (**Jinja2**) - gerencia dinâmicamente os arquivos **HTML** existentes no projeto. Estes arquivos são responsáveis pela interface gráfica (**Front-End**) da aplicação.
+- (**Werkzeug**) - uma biblioteca orientada para programas web seguindo o protocolo Python **WSGI** (**Web Server Gateway Interface**), responsável pela gestão e mapeamento de **rotas** para comunicação cliente-servidor da aplicação.
 
-- (**Werkzeug**) focada para aplicações web seguindo o protocolo Python **WSGI** (**Web Server Gateway Interface**), responsável pelo gerenciamento e mapeamento de **rotas** na comunicação cliente - servidor
-
-Não se engane com a estrutura compacta do **Flask**, pois seu atributo de **modularidade** proporciona **flexibilidade** para escolher diferentes bancos de dados como alguns exemplos abaixo:
-
+Não se engane com esta estrutura minimalista do **Flask**, pois está diretamente  relacionada a eficiência da biblioteca. Esta característica,por exemplo, proporciona **flexibilidade** para utilizar diferentes bancos de dados para o **Back-End** do seu programa. Alguns bancos de dados compatíveis com o **Flask**:
 
 
 
+- **MongoDB** (MongoDB) -- Database NoSQL
 
-- MongoDB (MongoDB) -- Database NoSQL
+- **DynamoDB** (Amazon-AWS) -- Database NoSQL
 
-- DynamoDB (Amazon-AWS) -- Database NoSQL
+- **MySQL** (Oracle) -- Database SQL
 
-- MySQL (Oracle) -- Database SQL
-
-- PostgreSQL (PostgreSQL) -- Database SQL
-
-  
+- **PostgreSQL** (PostgreSQL) -- Database SQL                                **OK ATE AQUI**
 
 
 
-
-
-O seu produto final de sua startup (**MVP**) pode se tornar um grande negócio com simplicidade e rapidez. O **Flask**  auxilia também no ensino, disponibilizando em poucas linhas de código um aplicativo funcional para o aprendizado em desenvolvimento web com **Python**.
-
-Sendo assim , nada melhor do que um exemplo para explicar a tecnologia não é?
-Iremos usar dois arquivos para o tutorial "Full-Stack" do Flask, seguindo a estrutura do diretório abaixo:
-
-
-
-
+O seu **MVP** pode se tornar um grande negócio com simplicidade e rapidez utilizando o **Flask**.  A utilização para o ensino de desenvolvimento web, é bastante indicada, pois disponibiliza em poucas linhas de código um aplicativo funcional, tornando a curva de aprendizado mais amena comparando com o Django. Sendo assim , nada melhor do que um exemplo para explicar a tecnologia não é? Utilizaremos uma abordagem "Full-Stack" do **Flask**, visando um melhor consolidação do conhecimento. O design da nossa aplicação para este tutorial, é demonstrado abaixo:
 
 
 
@@ -57,27 +43,17 @@ Iremos usar dois arquivos para o tutorial "Full-Stack" do Flask, seguindo a estr
 
 
 
-Figura 1 - Estrutura de um diretório de uma aplicação Flask
+Figura 1 – Design do diretório raiz para este tutorial
 
 
 
-
-
-
-
-O arquivo **1** é a nossa aplicação **Flask** e o **2** será o nosso **template** para a comunicação com o usuário que estará utilizando um navegador como o Google Chrome (**Client**) por exemplo, em que as informçãoes enviadas pelo mesmo (**Request**) serão interpretadas e respondidas pela aplicação **Flask** , imprimindo na tela do seu computador a resposta programada (**Response**). 
+O arquivo 1 (**app.py**) é a aplicação **Flask** e o arquivo 2  o **template** para  comunicação com o usuário. Este template poderá estar rodando no seu navegador favorito, como o Google Chrome (**Client**) por exemplo. As informações enviadas pelo cliente (navegador) através de uma requisição (***request***) serão interpretadas e respondidas pela aplicação **Flask**. O retorno da informação para tela do seu dispositível móvel será a resposta da aplicação (***Response***). 
 
 #### Não se esqueça:
 
 
 
-
-
-
-
-> # O Flask procura por padrão os templates na pasta ***templates***
-
-
+> # O Flask procura por padrão os arquivos HTML no diretório ***templates***
 
 
 
@@ -110,8 +86,6 @@ if __name__ == "__main__":
 
 
 
-
-
 ### Jinja2 template (Front-End)
 
 ```html
@@ -138,14 +112,16 @@ if __name__ == "__main__":
 
 
 
-O mecanismo de comunicação entre os dois arquivos (Python e HTML) será através do Protocolo **HTTP**.
+
+
+O mecanismo de comunicação entre os dois arquivos (Python e HTML) será através do Protocolo **HTTP**, métodos GET e POST.
 
 
 
 
 <img src="/home/rsl/Documents/GITHUB/Logic-Rate/tutoriais/image/web_app.jpg" style="zoom:300%;" />
 
-Figura 1 - Comunicação HTTP entre os arquivos Python e HTML
+Figura 2 - Comunicação HTTP entre os arquivos Python e HTML
 
 
 
@@ -160,11 +136,13 @@ Figura 1 - Comunicação HTTP entre os arquivos Python e HTML
    
 
 ```python
-from flask import Flask, render_template, request
-app = Flask(__name__) # Instância Flask
+from flask import Flask, render_template, request # (1)
+app = Flask(__name__) # Instância Flask           # (2)
 ```
 
-Nesta parte ocorre a inicialização da aplicação **Flask**. Os módulos (**Flask**, **render_template**, **request**) são importados para que a aplicação tenha os pré-requisitos para estar funcionando. Primeiro cria-se a instância **Flask** dentro do nosso módulo *main*, onde as rotas estarão definidas. Os parâmetros deste método são:
+Nesta parte ocorre a inicialização da aplicação **Flask**. Os módulos (**Flask**, **render_template**, **request**) são importados para que a aplicação tenha os pré-requisitos necessários para nosso tutorial (1). Os métodos **render_template** e **request** serão detalhados no próximo passo. Vamos admitir que nesta parte estes dois não são importantes para o funcionamento do app : )
+
+Sendo assim, primeiramente cria-se a instância **Flask** dentro da estrutura raiz do nosso aplicativo (2). As rotas estarão definidas dentro deste desing. Para entendermos o que signigica este “objeto” **Flask**, os parâmetros são descritos abaixo. Para maior informação (Link):
 
 
 
@@ -172,19 +150,17 @@ Nesta parte ocorre a inicialização da aplicação **Flask**. Os módulos (**Fl
 
 
 
-O objeto ou instância **Flask**, implementará a nossa aplicação **WSGI**. Todo o fluxo de dados dentro do nosso **web-app** circularão por este "controlador". 
+O objeto ou instância **Flask**, é o nosso maestro que conduzira o fluxo de dados seguindo o protocolo **WSGI**. 
 
 
 
-> DICA: O Flask utiliza este parâmetro __name__ para determinar o diretório raiz da aplicação, usando futuramente na procura dos outros arquivos utilizados na execução do app
-
-
+> DICA: O **Flask** utiliza este parâmetro __name__ para determinar o diretório raiz da aplicação, sendo usado futuramente para a procura de outros arquivos utilizados para execução do nosso código
 
 
 
 ---
 
-- # Rotas (Request & Response)
+- # Rotas - mecanismo Endpoint → Request →  Response
 
 
 
@@ -203,17 +179,9 @@ def pagina_inicial():
 
 
 
+A estrutura **@app.route()** chama-se **endpoint decorator.** Para cada página da aplicação web, o **Flask** atribui uma função em que será executada quando este recurso for requisitado. Sendo assim os **decorators** atuam na adição de funcionalidades extras para funções em que você importa de uma biblioteca pessoal ou de terceiros, visando não alterar a estrutura original destas. 
 
-
-A estrutura **@app.route()** chama-se **endpoint decorator.** Cada página da aplicação web, o Flask atribui uma função em que será executada quando este **endpoint** for requisitado. Sendo assim os **decorators** podem ser utilizados para adcionar mais funcionalidades para as funções em que você importa de uma biblioteca pessoal ou de terceiros, sem modificar a estrutura original da mesma. Quando você utiliza o sistema de roteamento da biblioteca **Werkzeug**  os métodos **url_map.add(...) ** faz o mapeamento da função responsável pelo **endpoint** (***view function***). O método route( ) irá realizar a mesma combinação como mostrado abaixo com a utilização da biblioteca **Werkzeug** explicitamente:
-
-
-
-
-
-```python
-from flask import Flask, render_template
-from werkzeug.routing import Rule
+Quando você utiliza o sistema de roteamento da biblioteca **Werkzeug** **url_map.add(...) **, estes realizam o mapeamento da função responsável pelo **endpoint** requisitado, nomeando essa função de ***view function***. O método **route( )** realizará a mesma combinação.
 
 
 #@app.route('/', methods=['GET', 'POST'])
@@ -228,10 +196,6 @@ def pagina_inicial():
     return render_template('pagina_inicial.html',
                                dados=frase_para_encaminhar_para_tela)
 ```
-
-
-
-
 
 
 
@@ -260,7 +224,7 @@ def pagina_inicial():
                                dados=frase_para_encaminhar_para_tela)
 ```
 
-No exemplo acima, verifica-se que a comunicação cliente-servidor seguirá diferentes rotas para acessar o mesmo recurso. Os dados (**o estado**) do sistema serão tratados dentro de uma única view function - **pagina_inicial( )** . Sendo assim, diferentes endpoints podem acessar o mesmo recurso criando diferentes rotas. Cabe ao programador desenvolver com eficiência as rotas do seu app, evitando futuras dores de cabeça : )
+No exemplo acima, verifica-se que a comunicação cliente-servidor seguirá diferentes rotas para acessar o mesmo recurso. Os dados (**o estado**) do sistema serão tratados dentro de uma única view function - **pagina_inicial( )** . Sendo assim, diferentes **endpoints** podem acessar o mesmo recurso criando diferentes rotas. Cabe ao programador desenvolver com eficiência as rotas do seu app, evitando futuras dores de cabeça : )
 
 
 
@@ -269,14 +233,17 @@ No exemplo acima, verifica-se que a comunicação cliente-servidor seguirá dife
 ---
 
 
+O método request é utilzado para capturarmos os dados vindos do navegador. Este possui alguns métodos específicos no protocolo HTTP. Vamos utilizar uma analogia com o mecanismo CRUD e os métodos existentes:
 
+``` python
+if request.method ...```
 
+- Create – POST (Cria um novo registro no banco de dados)
+- Read   - GET  (Obtém uma informação do sistema sem alterar os estado do mesmo)
+- Update - PATCH & POST (Atualiza um registro no banco de dados)
+- Delete – DELETE  (Deleta um registro no banco de dados)
 
-
-
-Voltando para a **view function** do aplicativo **Flask**, se o usuário não digitar nenhum argumento dentro do formulário da página inicial, o método **HTTP** disparado pela rota será o **GET**. Abaixo verificamos os códigos Python e HTML disparados por este método, junto com a página web retornada pelo mesmo.
-
-
+Sendo assim, o método request identifica qual tipo de método está sendo requisitado, entrando dentro de uma estrutura condional do Python. Utilizando uma linguagem mais simples, se o usuário não digitar nenhum argumento dentro do formulário da página inicial, o método **HTTP** disparado pela rota será o **GET** ao contrário se preencher e clicar no botão enviar acionará o método POST. Abaixo verificamos os códigos **Python** e **HTML** disparados para o método GET, junto com a página web retornada pelo método.
 
 
 
@@ -320,7 +287,14 @@ def pagina_inicial():
 
 
 
-Contudo, digitando no formulário e pressionando o botão envie, o método **POST** será disparado pela rota. A informação do texto com o nome de variável "**entrada**" será interpretado pela **view function** **pagina_inicial( )**, atribuindo este valor a variável **frase_para_encaminhar_para_tela**, retornando com uma resposta (**response**) do tipo renderizar um arquivo **HTML** junto com os dados obtidos dentro da função:
+Contudo, digitando no formulário e pressionando o botão envie como já mencionado, o método **POST** será ativado dentro da rota. A informação do texto com o nome de variável "**entrada**" será interpretado pela **view function** **pagina_inicial( )** pela função:
+
+```python
+formulario_preenchido_pelo_usuario = request.form.get('entrada',"")
+frase_para_encaminhar_para_tela = formulario_preenchido_pelo_usuario
+```
+
+Ocorre a atribuição deste valor para variável **frase_para_encaminhar_para_tela**. Cabe salientar que há uma redundância nesta variável, atribuindo o mesmo valor lido pelo request.forms.get(). Esta estrutura foi utilizada para fins didáticos. O retorno do método POST será atrvés de uma resposta (**response**) do tipo renderizar um arquivo **HTML** (render_template) junto com os dados obtidos dentro da função. Para maiores informações deste método, segue o link ao lado:
 
 
 
@@ -369,20 +343,20 @@ Figura 2 - Mecanismo de uma comunicação cliente servidor (Método POST e GET)
 
 
 
-A instância app possui um método chamdo **run( )** que executa o servidor integrado no **Flask**. A parte do código acima:
+Tendo a aplicação estruturada, a instância app possui um método chamado **run( )** que executa o servidor integrado ao **Flask** oara desenvolvimento e produção. A parte do código acima:
 
 `if __name__ == "__main__":` 
 
-... é utilizada para confirmar que o servidor web de desenvolvimento será iniciado somente quando o **app.py** for executado. Quando ocorrer esta inicialização, a aplicação entra em ***loop*** continuo até que seja interrompido pelo comando **CTRL+C** por exemplo do seu teclado. Existem diversos argumentos que podem ser atribuidos a este método **run( )**:
+... é utilizada para confirmar que o servidor será iniciado somente quando o **app.py** for executado. Quando ocorrer esta inicialização, a aplicação entra em um ***loop*** contínuo até que seja interrompido pelo comando **CTRL+C** do seu teclado, por exemplo. Existem outros argumentos para esta função **run( )**:
 
 `run(host=None, port=None, debug=None, load_dotenv=True, **options)`
 
 Cabe salientar, que durante o desenvolviemento é conveniente a utilização do argumento `debug=True`,
-o qual habilita um debugger para o contole dos erros do seu código sendo impressos no navegador utilizado e um reloader para reiniciar o servidor se alguma mudança no programa for feita sem que ocorra uma interrupção do desenvolvimento. Importante saber que este atributo deve ser nulo durante ao **período de produção** do seu app (sendo utilizado por terceiros) , evitando que seus usuários ou prováveis hackers não descubram as brechas do seu sistema ; )
+o qual habilita um debugger para o contole dos erros do seu software, sendo estes impressos no navegador. Um reloader para reiniciar o servidor também é ativado com este parâmetro, caso ocorra alguma mudança no seu programa e você não tenha que rodar o código novamente no terminal do seu sistema operacional. Importante saber que este atributo deve ser nulo durante o **período de produção** do app. Isto evita que usuários ou prováveis hackers descubram as brechas do seu sistema ; )
 
 
 
-O código utilizado neste tutorial encontra-se no Github:
+Para teste e estudo junto com o texto, o código utilizado neste tutorial encontra-se no Github em uma estrutura Flask e Jupyter notebook, este último atuando como um caderno iterativo:
 
 www.meusite.com
 
