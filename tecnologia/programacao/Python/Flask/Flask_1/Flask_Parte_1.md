@@ -1,4 +1,5 @@
 ### Entenda Flask-Python com uma perspectiva Full-Stack
+https://medium.com/@rodrigo.schmidt.lucchesi/flask-full-stack-5144b5e9ee4d
 
 ---
 
